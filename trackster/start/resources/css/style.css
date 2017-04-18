@@ -6,7 +6,7 @@ html{
   font-size: 16px;
 }
 
-.row {
+.row.header {
   background-color: rgb(35, 2, 63);
   height: 6rem;
 }
@@ -14,7 +14,7 @@ html{
   font-family: Righteous;
   font-size: 2.5rem;
   color: rgb(255, 0, 171);
-  margin: 2rem 2rem;
+  margin-top: 2rem;
 }
 
 .row input {
@@ -30,4 +30,26 @@ html{
   margin-top: 2rem;
   width: 80%;
   height: 2.5rem;
+}
+
+.row.columns {
+  background-color: rgb(104, 0, 255);
+}
+
+.column {
+  color: rgb(255, 255, 255);
+}
+
+#song-list {
+  font-family: Work Sans, sans-serif;
+  font-size: 1rem;
+  color: rgb(74, 74, 74);
+}
+
+i{
+  background-color: white;
+}
+
+.fa.fa-play-circle-o {
+  color: rgb(255, 102, 204);
 }
