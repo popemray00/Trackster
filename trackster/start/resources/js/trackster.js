@@ -1,9 +1,10 @@
 var Trackster = {};
 
-
+$(document).ready(function() {
 $('#btn').click(function() {
   var item = $('input').val()
-  Trackster.searchTracksByTitle(item);
+  Trackster.searchTracksByTitle(item)
+  });
 });
 /*
   Given an array of track data, create the HTML for a Bootstrap row for each.
@@ -14,7 +15,7 @@ Trackster.renderTracks = function(tracks) {
 
   $songList.empty();
 
-for (var songIndex = 0, songIndex < tracks.length, songIndex++){
+for (var songIndex = 0; songIndex < tracks.length; songIndex++){
   var track = tracks[songIndex];
   var htmlTrackRow =
   '<div class="row track">' +
@@ -28,6 +29,8 @@ for (var songIndex = 0, songIndex < tracks.length, songIndex++){
        '<div class="col-xs-2 ">' + track.album.name + '</div>' +
        '<div class="col-xs-2 ">'+ track.popularity +'</div>' +
     '</div>';
+
+    $songList.append(htmlTrackRow);
 }
 
 };
@@ -39,6 +42,8 @@ for (var songIndex = 0, songIndex < tracks.length, songIndex++){
 Trackster.searchTracksByTitle = function(title) {
   $.ajax({
     url: 'https://api.spotify.com/v1/search?type=track&q=' + title,
-  })
-console.log(title);
+    success: function(response) {
+      Trackster.renderTracks(response.tracks.items);
+    }
+  });
 };
