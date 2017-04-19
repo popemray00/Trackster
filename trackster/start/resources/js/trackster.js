@@ -5,6 +5,12 @@ $('#btn').click(function() {
   var item = $('input').val()
   Trackster.searchTracksByTitle(item)
   });
+  $('input').keypress(function(e){
+        if(e.which == 13){//Enter key pressed
+            $('#btn').click();//Trigger search button click event
+        }
+    });
+
 });
 /*
   Given an array of track data, create the HTML for a Bootstrap row for each.
@@ -42,8 +48,10 @@ for (var songIndex = 0; songIndex < tracks.length; songIndex++){
 Trackster.searchTracksByTitle = function(title) {
   $.ajax({
     url: 'https://api.spotify.com/v1/search?type=track&q=' + title,
+    
     success: function(response) {
       Trackster.renderTracks(response.tracks.items);
     }
+
   });
 };
